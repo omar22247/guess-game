@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+    <script>
+        let header = document.createElement("header");
+        header.style.cssText =
+            "display:flex; justify-content: space-between;    background-color: blue;padding-inline: 15px;";
+        header.style.minHeight = "10vh";
+        header.style.lineHeight = "5vh";
+        let logo = document.createElement("h3");
+        logo.style.width = "fit-content";
+        logo.textContent = "Omar";
+        let navc = document.createElement("div");
+        let ul = document.createElement("ul");
+        navc.appendChild(ul);
+        let nav = ["home", "about", "service", "contact"];
+
+        for (let i = 1; i < 5; i++) {
+            let li = document.createElement("li");
+            li.style.cssText = "display:inline-block; margin-left:10px;";
+            li.className = `${i}`;
+            let a = document.createElement("a");
+            a.textContent = `${nav[i - 1]}`;
+            ul.appendChild(li);
+            li.appendChild(a);
+        }
+        header.appendChild(logo);
+        header.appendChild(navc);
+        document.body.appendChild(header);
+
+        // ------------------------------------------------------
+        let main = document.createElement("section");
+        main.style.cssText =
+            "   display: grid;     grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-block: 8px;   position: relative;";
+        document.body.appendChild(main);
+        main.style.minHeight = "calc(80vh - 32px)";
+
+        let o = 0;
+
+        main.innerHTML = "";
+        let t = Math.floor(Math.random() * (15 - 1 + 1)) + 1;
+        console.log(t);
+        let count = 0;
+
+        for (let i = 1; i < 16; i++) {
+            let card = document.createElement("div");
+            card.id = `${i}`;
+            card.className = `Card${i}`;
+            card.innerHTML = `${card.id}`;
+            card.style.textAlign = "center";
+            card.style.alignContent = "center";
+            card.style.backgroundColor = "red";
+            main.appendChild(card);
+            card.style.fontSize = "2rem";
+
+            card.addEventListener("click", () => {
+                count++;
+                // console.log(count);
+
+                if (count < 4) {
+                    if (card.getAttribute("class") === `Card${t}`) {
+                        card.textContent = "winner";
+                        card.style.backgroundColor = "rgb(243, 226, 40)";
+                        let windowf = document.createElement("div");
+                        windowf.innerHTML = "<h1>Winner</h1>"
+                        count = 5;
+                        windowf.style.cssText = "text-align: center;align-content: center; position:  z-index: 3 !important; position: absolute; top: 50%;left: 50%; transform: translate(-50%, -50%); background-color:rgb(15, 154, 149); min-height: 30vh; width: 600px; margin-left: auto; margin-right: auto;border-radius: 20px;  border: 5px solid black; "
+                        document.body.appendChild(windowf)
+
+                    } else {
+                        card.textContent = "looser";
+                        card.style.backgroundColor = "grey";
+                    }
+                } else if (count == 4) {
+                    card.innerHTML = "<h5>Your chances are over</h5>";
+                    card.style.backgroundColor = "orange";
+                    card.style.fontSize = "1.25rem";
+                    let window = document.createElement("div");
+                    window.innerHTML = "<h1>Try again</h1>"
+                    window.style.cssText = "text-align: center;align-content: center; position:  z-index: 3 !important; position: absolute; top: 50%;left: 50%; transform: translate(-50%, -50%); background-color:rgb(15, 154, 149); min-height: 30vh; width: 600px; margin-left: auto; margin-right: auto;border-radius: 20px;  border: 5px solid black; "
+                    document.body.appendChild(window)
+                }
+            });
+
+
+        };
+
+        // // ------------------------------------------------------
+        let footer = document.createElement("footer");
+        document.body.appendChild(footer);
+        footer.textContent = "copy right";
+        footer.style.textAlign = "center";
+        footer.style.backgroundColor = "green";
+        footer.style.minHeight = "10vh";
+        footer.style.lineHeight = "10vh";
+    </script>
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>
