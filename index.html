@@ -5,12 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="cv.css">
 </head>
 
 <body>
-
+    <!-- <button>gggg</button> -->
     <script>
+        let butto = document.createElement("button");
+        butto.textContent = "try again";
+        butto.style.cssText = "    background-color: black; color: white; width: 150px;height: 50px;font-size: 1.5rem;border-radius: 10px;"
+
         let header = document.createElement("header");
         header.style.cssText =
             "display:flex; justify-content: space-between;    background-color: blue;padding-inline: 15px;";
@@ -64,7 +68,7 @@
 
             card.addEventListener("click", () => {
                 count++;
-                // console.log(count);
+                console.log(count);
 
                 if (count < 4) {
                     if (card.getAttribute("class") === `Card${t}`) {
@@ -75,6 +79,8 @@
                         count = 5;
                         windowf.style.cssText = "text-align: center;align-content: center; position:  z-index: 3 !important; position: absolute; top: 50%;left: 50%; transform: translate(-50%, -50%); background-color:rgb(15, 154, 149); min-height: 30vh; width: 600px; margin-left: auto; margin-right: auto;border-radius: 20px;  border: 5px solid black; "
                         document.body.appendChild(windowf)
+                        butto.textContent = "Play again";
+                        windowf.appendChild(butto);
 
                     } else {
                         card.textContent = "looser";
@@ -88,11 +94,15 @@
                     window.innerHTML = "<h1>Try again</h1>"
                     window.style.cssText = "text-align: center;align-content: center; position:  z-index: 3 !important; position: absolute; top: 50%;left: 50%; transform: translate(-50%, -50%); background-color:rgb(15, 154, 149); min-height: 30vh; width: 600px; margin-left: auto; margin-right: auto;border-radius: 20px;  border: 5px solid black; "
                     document.body.appendChild(window)
+                    window.appendChild(butto);
                 }
             });
 
 
         };
+        butto.onclick = function() {
+            location.reload();
+        }
 
         // // ------------------------------------------------------
         let footer = document.createElement("footer");
@@ -103,7 +113,7 @@
         footer.style.minHeight = "10vh";
         footer.style.lineHeight = "10vh";
     </script>
-    <script src="assets/js/main.js"></script>
+
 </body>
 
 </html>
